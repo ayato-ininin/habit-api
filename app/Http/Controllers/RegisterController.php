@@ -12,24 +12,22 @@ class RegisterController extends Controller
 {
     public function post(Request $request)
     {
-        $hashed_password=Hash::make($request->password);
-        $now=Carbon::now();
+        $hashed_password = Hash::make($request->password);
+        $now = Carbon::now();
 
-        $param=
-        [
-            "name" =>$request->name,
-            "email" =>$request->email,
-            "password" =>$hashed_password,
-            "created_at" =>$now,
-            "updater_at" =>$now,
-        ];
-        // データベースに挿入して、帰ってくるレスポンスに対して、jsonコレクションで、jsonに変える。そのときにメッセージとデータと、ステータスコードを入れれる。
+        $param =
+            [
+                "name" => $request->name,
+                "email" => $request->email,
+                "password" => $hashed_password,
+                "created_at" => $now,
+                "updater_at" => $now,
+            ];
+      
         DB::table('users')->insert($param);
         return response()->json([
-            'message'=>'user created successfully',
-            'data'=>$param
-        ],200);
-
-
+            'message' => 'user created successfully',
+            'data' => $param
+        ], 200);
     }
 }
