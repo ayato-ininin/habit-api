@@ -10,4 +10,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register',[RegisterController::class,'post']);
 Route::post('/login',[LoginController::class,'post']);
-Route::post('/Logout',[LogoutController::class,'post']);
+Route::post('/logout',[LogoutController::class,'post']);
