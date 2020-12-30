@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Habit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HabitController extends Controller
 {
@@ -47,7 +48,15 @@ class HabitController extends Controller
      */
     public function show(Habit $habit)
     {
-        // 
+        $item=Habit::where('id',$habit->id)->first();
+        $user_id=$item->user_id;
+        $user=DB::table('users')->where('id',(int)$user_id)->first();
+        $items=[
+            "item"=>$item,
+            "name"=>$user->name,
+        ];
+        return response()->json($items,200
+    );
     }
 
     /**
