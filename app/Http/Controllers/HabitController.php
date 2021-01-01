@@ -53,13 +53,11 @@ class HabitController extends Controller
         $user = DB::table('users')->where('id', (int)$user_id)->first();
         $content = DB::table('contains')->where('habit_id', $habit->id)->get();
         $content_data = array();
-        $point_data=array();
         if (empty($content->toArray())) {
             $items = [
                 "item" => $item,
                 "name" => $user->name,
-                "content" => $content_data,
-                "point"=>$point_data
+                "content" => $content_data, 
             ];
             return response()->json($items, 200);
         }else {
@@ -67,24 +65,15 @@ class HabitController extends Controller
             $content_user = DB::table('users')->where('id', $value->user_id)->first();
             $contents = [
                 "content" => $value,
-                "content_user" => $content_user
+                "content_user" => $content_user,
             ];
             array_push($content_data, $contents);
         }
-        foreach ($content as $value){
-            $point_user=DB::table('users')->where('id',$value->user_id)->firse();
-            $points=[
-                "point"=>$value,
-                "point_user"=>$point_user
-            ];
-            array_push($point_data,$points);
-        }
-
+        
         $items = [
             "item" => $item,
             "name" => $user->name,
             "content" => $content_data,
-            "point"=>$point_data
         ];
         return response()->json($items, 200);
     }
