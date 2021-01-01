@@ -66,7 +66,7 @@ class HabitController extends Controller
         foreach ($content as $value) {
             $content_user = DB::table('users')->where('id', $value->user_id)->first();
             $contents = [
-                "content" => $value->contain,
+                "content" => $value,
                 "content_user" => $content_user
             ];
             array_push($content_data, $contents);
@@ -74,7 +74,7 @@ class HabitController extends Controller
         foreach ($content as $value){
             $point_user=DB::table('users')->where('id',$value->user_id)->firse();
             $points=[
-                "point"=>$value->point,
+                "point"=>$value,
                 "point_user"=>$point_user
             ];
             array_push($point_data,$points);
