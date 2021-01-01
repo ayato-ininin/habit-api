@@ -53,11 +53,10 @@ class HabitController extends Controller
         $user = DB::table('users')->where('id', (int)$user_id)->first();
         $content = DB::table('contains')->where('habit_id', $habit->id)->get();
         $content_data = array();
-        if (empty($content->toArray())) {
+        if (empty($content)) {
             $items = [
                 "item" => $item,
                 "name" => $user->name,
-               
             ];
             return response()->json($items, 200);
         }else {
