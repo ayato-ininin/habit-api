@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class ContentsController extends Controller
+class ContainsController extends Controller
 {
 public function post(Request $request){
     $now=Carbon::now();
@@ -18,7 +18,7 @@ public function post(Request $request){
         "created_at"=>$now,
         "updated_at"=>$now
     ];
-    DB::table('contents')->insert($param);
+    DB::table('contains')->insert($param);
     return response()->json([
         'message'=>'contents created suceessfully',
         'data'=>$param
