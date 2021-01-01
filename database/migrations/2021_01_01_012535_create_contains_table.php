@@ -13,7 +13,7 @@ class CreateContainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('contains', function (Blueprint $table) {
             $table->id();
             $table->string('habit_id');
             $table->string('user_id');
