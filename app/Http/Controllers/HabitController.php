@@ -62,7 +62,7 @@ class HabitController extends Controller
             return response()->json($items, 200);
         }
         foreach ($content as $value){
-            $content_user=DB::table('user')->where('id',$value->user_id)->first();
+            $content_user=DB::table('users')->where('id',$value->user_id)->first();
             $contents=[
                 "content"=>$value,
                 "content_user"=>$content_user
