@@ -57,7 +57,7 @@ class HabitController extends Controller
             $items = [
                 "item" => $item,
                 "name" => $user->name,
-                "content" => $content_data
+                
             ];
             return response()->json($items, 200);
         }
