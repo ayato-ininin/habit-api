@@ -51,9 +51,9 @@ class HabitController extends Controller
         $item = Habit::where('id', $habit->id)->first();
         $user_id = $item->user_id;
         $user = DB::table('users')->where('id', (int)$user_id)->first();
-        $content = DB::table('contains')->where('habit_id', $habit->id)->get();
+        $cont = DB::table('contains')->where('habit_id', $habit->id)->get();
         $content_data = array();
-        if (empty($content->toArray())) {
+        if (empty($cont->toArray())) {
             $items = [
                 "item" => $item,
                 "name" => $user->name,
@@ -62,7 +62,7 @@ class HabitController extends Controller
             return response()->json($items, 200);
         }else {
 
-        foreach ($content as $value) {
+        foreach ($cont as $value) {
             $content_user = DB::table('users')->where('id', $value->user_id)->first();
             $contents = [
                 "content" => $value,
