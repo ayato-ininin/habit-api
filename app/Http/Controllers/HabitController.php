@@ -51,28 +51,12 @@ class HabitController extends Controller
         $item = Habit::where('id', $habit->id)->first();
         $user_id = $item->user_id;
         $user = DB::table('users')->where('id', (int)$user_id)->first();
-        $content = DB::table('contains')->where('habit_id', $habit->id)->get();
-        $content_data = array();
-        if (empty($content->toArray())) {
-            $items = [
-                "item" => $item,
-                "name" => $user->name,
-                
-            ];
-            return response()->json($items, 200);
-        }
-        foreach ($content as $value) {
-            $content_user = DB::table('users')->where('id', $value->user_id)->first();
-            $contents = [
-                "content" => $value,
-                "content_user" => $content_user
-            ];
-            array_push($content_data, $contents);
-        }
+        
+        
         $items = [
             "item" => $item,
             "name" => $user->name,
-            "content" => $content_data
+            
         ];
         return response()->json($items, 200);
     }
