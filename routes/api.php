@@ -14,6 +14,5 @@ Route::post('/register',[RegisterController::class,'post']);
 Route::post('/login',[LoginController::class,'post']);
 Route::post('/logout',[LogoutController::class,'post']);
 Route::apiResource('/habits',HabitController::class);
-Route::apiResource('/habits/{habits}','HabitController@show');
 Route::get('/user',[UsersController::class,'get']);
 Route::post('/contain',[ContainsController::class,'post']);
