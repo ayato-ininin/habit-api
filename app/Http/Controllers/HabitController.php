@@ -68,8 +68,7 @@ class HabitController extends Controller
                 "content_user" => $content_user
             ];
             array_push($content_data, $contents);
-        }
-    }
+        }    
         
         $items = [
             "item" => $item,
@@ -77,6 +76,7 @@ class HabitController extends Controller
             "content" => $content_data,
         ];
         return response()->json($items, 200);
+    }
         
     }
 
