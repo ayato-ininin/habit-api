@@ -51,7 +51,7 @@ class HabitController extends Controller
         $item = Habit::where('id', $habit->id)->first();
         $user_id = $item->user_id;
         $user = DB::table('users')->where('id', (int)$user_id)->first();
-        $content = DB::table('contents')->where('habit_id', $habit->id)->get();
+        $content = DB::table('contains')->where('habit_id', $habit->id)->get();
         $content_data = array();
         if (empty($content->toArray())) {
             $items = [

@@ -13,9 +13,8 @@ class ChangeContentsTableColumnHabitId extends Migration
      */
     public function up()
     {
-        Schema::table('contents', function (Blueprint $table) {
-            $table->renameColumn('habit-id','habit_id');
-        });
+    //   
+        
     }
 
     /**
@@ -25,8 +24,6 @@ class ChangeContentsTableColumnHabitId extends Migration
      */
     public function down()
     {
-        Schema::table('contents', function (Blueprint $table) {
-            $table->renameColumn('habit_id','habit-id');
-        });
+        // 
     }
 }

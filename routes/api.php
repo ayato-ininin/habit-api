@@ -6,7 +6,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HabitController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\ContentsController;
+use App\Http\Controllers\ContainsController;
 
 
 
@@ -15,4 +15,4 @@ Route::post('/login',[LoginController::class,'post']);
 Route::post('/logout',[LogoutController::class,'post']);
 Route::apiResource('/habits',HabitController::class);
 Route::get('/user',[UsersController::class,'get']);
-Route::post('/content',[ContentsController::class,'post']);
+Route::post('/contain',[ContainsController::class,'post']);
