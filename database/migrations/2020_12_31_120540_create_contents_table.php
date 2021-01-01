@@ -15,7 +15,7 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->string('habit-id');
+            $table->string('habit_id');
             $table->string('user_id');
             $table->string('contain');
             $table->string('point');
