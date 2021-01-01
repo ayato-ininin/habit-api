@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameContentsTable extends Migration
+class ChangeContentsTableColumnHabitId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class RenameContentsTable extends Migration
      */
     public function up()
     {
-    //    
+        Schema::table('contents', function (Blueprint $table) {
+            $table->renameColumn('habit-id','habit_id');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class RenameContentsTable extends Migration
      */
     public function down()
     {
-    //    
+        Schema::table('contents', function (Blueprint $table) {
+            $table->renameColumn('habit_id','habit-id');
+        });
     }
 }
