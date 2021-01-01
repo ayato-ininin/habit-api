@@ -49,19 +49,33 @@ class HabitController extends Controller
     public function show(Habit $habit)
     {
         $item = Habit::where('id', $habit->id)->first();
-        $user_id = $item->user_id;
-        $user = DB::table('users')->where('id', $user_id)->first();
-       
-        $items = [
-            "item" => $item,
-            "name" => $user->name,
-            
-        ];
-        return response()->json($items, 200);
-    
+        $content = DB::table('contains')->where('habit_id', $habit->id)->get();
+        $content_data = array();
+        if (empty($content->toArray())) {
+            $items = [
+                "item" => $item,
+            ];
+            return response()->json($items, 200);
+        } else {
 
-        
+            foreach ($content as $value) {
+               
+                $contents = [
+                    "content" => $value,
+                    
+                ];
+                array_push($content_data, $contents);
+            }
+
+            $items = [
+                "item" => $item,
+                
+                "content" => $content_data,
+            ];
+            return response()->json($items, 200);
+        }
     }
+
 
     /**
      * Update the specified resource in storage.
