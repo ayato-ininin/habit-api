@@ -59,7 +59,7 @@ class HabitController extends Controller
                 "name" => $user->name,
                 "content" => $content_data, 
             ];
-          
+            return response()->json($items, 200);
         }else {
 
         foreach ($content as $value) {
@@ -76,9 +76,8 @@ class HabitController extends Controller
             "name" => $user->name,
             "content" => $content_data,
         ];
-        
-    }
         return response()->json($items, 200);
+    }
         
     }
 
