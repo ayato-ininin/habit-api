@@ -21,4 +21,15 @@ class UsersController extends Controller
             ],404);
         }
     }
+    public function put(Request $request){
+        $param=[
+            'name'=>$request->name,
+            'email'=>$request->email
+        ];
+        DB::table('users')->where('name',$request->name)->update($param);
+        return response()->json([
+            'message'=>'user updated succesfully',
+            'data'=>$param
+        ],200);
+    }
 }
