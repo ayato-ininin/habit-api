@@ -90,7 +90,19 @@ class HabitController extends Controller
      */
     public function update(Request $request, Habit $habit)
     {
-        //
+        $param=[
+            "habit"=>$request->habit
+        ];
+        $item = Habit::where('id',$habit->id)->update($param);
+        if($item){
+            return response()->json([
+                'message'=>'update successfully'
+            ],200);
+        }else{
+            return response()->json([
+                'message'=>'not found'
+            ],404);
+        }
     }
 
     /**
