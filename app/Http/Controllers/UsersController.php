@@ -26,7 +26,7 @@ class UsersController extends Controller
             'name'=>$request->name,
             'email'=>$request->email
         ];
-        DB::table('users')->where('name',$request->name)->update($param);
+        DB::table('users')->where('email',$request->email)->update($param);
         return response()->json([
             'message'=>'user updated succesfully',
             'data'=>$param
